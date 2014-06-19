@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,43 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict
 {
-	public class BitString
+	public class Definition
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		private var _definition:String;
+		private var _database:String;
+		private var _term:String;
+		
+		public function set definition(definition:String):void
+		{
+			this._definition = definition;
+		}
+		
+		public function get definition():String
+		{
+			return this._definition;
+		}
+
+		public function set database(database:String):void
+		{
+			this._database = database;
+		}
+		
+		public function get database():String
+		{
+			return this._database;
+		}
+
+		public function set term(term:String):void
+		{
+			this._term = term;
+		}
+		
+		public function get term():String
+		{
+			return this._term;
+		}
 	}
 }

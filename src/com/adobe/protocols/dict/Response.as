@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,43 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict
 {
-	public class BitString
+	public class Response
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		private var _code:uint;
+		private var _headerText:String;
+		private var _body:String;
+
+		public function set code(code:uint):void
+		{
+			this._code = code;
+		}
+
+		public function set headerText(headerText:String):void
+		{
+			this._headerText = headerText;
+		}
+
+		public function set body(body:String):void
+		{
+			this._body = body;
+		}
+
+		public function get code():uint
+		{
+			return this._code;
+		}
+
+		public function get headerText():String
+		{
+			return this._headerText;
+		}
+
+		public function get body():String
+		{
+			return this._body;
+		}
 	}
 }

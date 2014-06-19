@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,40 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict.util
 {
-	public class BitString
+	import flash.events.Event;
+
+	public class CompleteResponseEvent extends Event
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		private var _response:String;
+
+		public static const COMPLETE_RESPONSE:String = "completeResponse"
+
+		public function CompleteResponseEvent(type:String, bubbles:Boolean = false,
+														cancelable:Boolean = false)
+		{
+			super(type, bubbles, cancelable);
+		}
+
+		public function set response(response:String):void
+		{
+			this._response = response;
+		}
+		
+		public function get response():String
+		{
+			return this._response;
+		}
+		
+		public override function clone():Event
+		{
+			var out:CompleteResponseEvent = new CompleteResponseEvent(type, 
+															bubbles, cancelable);
+			out.response = _response;
+			
+			return out;
+		}
 	}
 }

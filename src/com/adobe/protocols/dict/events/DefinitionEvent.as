@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,42 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict.events
 {
-	public class BitString
+	import com.adobe.protocols.dict.Definition;
+	
+	import flash.events.Event;
+	
+
+	public class DefinitionEvent extends Event
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		public static const DEFINITION:String = "definition";		
+		
+		private var _definition:Definition;
+		
+		public function DefinitionEvent(type:String, bubbles:Boolean = false,
+													cancelable:Boolean = false)
+		{
+			super(type, bubbles, cancelable);
+		}
+		
+		public function set definition(definition:Definition):void
+		{
+			this._definition = definition;
+		}
+		
+		public function get definition():Definition
+		{
+			return this._definition;
+		}
+		
+		public override function clone():Event
+		{
+			var out:DefinitionEvent = new DefinitionEvent(type, bubbles, cancelable);
+			out.definition = _definition;
+			
+			return out;
+		}
 	}
 }

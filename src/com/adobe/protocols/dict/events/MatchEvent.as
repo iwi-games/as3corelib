@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,39 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict.events
 {
-	public class BitString
+	import flash.events.Event;
+
+	public class MatchEvent extends Event
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		private var _matches:Array;
+		
+		public static const MATCH:String = "match";
+		
+		public function MatchEvent(type:String, bubbles:Boolean = false,
+													cancelable:Boolean = false)
+		{
+			super(type, bubbles, cancelable);
+		}
+		
+		public function set matches(matches:Array):void
+		{
+			this._matches = matches;
+		}
+		
+		public function get matches():Array
+		{
+			return this._matches;
+		}
+		
+		public override function clone():Event
+		{
+			var out:MatchEvent = new MatchEvent(type, bubbles, cancelable);
+			out.matches = _matches;
+			
+			return out;
+		}
 	}
 }

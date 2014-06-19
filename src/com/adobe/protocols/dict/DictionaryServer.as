@@ -1,5 +1,5 @@
 /*
-  Copyright (c) 2008, Adobe Systems Incorporated
+  Copyright (c) 2009, Adobe Systems Incorporated
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without 
@@ -29,11 +29,32 @@
   NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-package com.adobe.images
+
+package com.adobe.protocols.dict
 {
-	public class BitString
+	public class DictionaryServer
 	{
-		public var len:int = 0;
-		public var val:int = 0;
+		private var _server:String;
+		private var _description:String;
+
+		public function set server(server:String):void
+		{
+			this._server = server;
+		}
+		
+		public function get server():String
+		{
+			return this._server;
+		}
+
+		public function set description(description:String):void
+		{
+			this._description = description;
+		}
+		
+		public function get description():String
+		{
+			return this._description;
+		}
 	}
 }
